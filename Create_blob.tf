@@ -18,7 +18,7 @@ terraform {
 
 # Configure the Azure Active Directory Provider
 provider "azuread" {
-  tenant_id = "f3bfdc11-1a09-4dc9-b0e4-970415773301"
+  tenant_id = "xxxx-xxx-xxx-xx"
 }
 
 
@@ -45,10 +45,10 @@ resource "azurerm_storage_container" "devops_container" {
 }
 
 resource "azuread_user" "aaduser" {
-  user_principal_name   = "user1@dhancloud.onmicrosoft.com"
+  user_principal_name   = "user1@test.onmicrosoft.com"
   display_name          = "User one"
   mail_nickname         = "user1"
-  password              = "TempP@55" # Set the user's initial password
+  password              = "!TempP@55" # Set the user's initial password
   force_password_change = false      # Set to true if the user should change their password on first login
 }
 
