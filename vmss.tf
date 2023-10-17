@@ -75,9 +75,22 @@ resource "azurerm_network_security_rule" "nsgInrule2" {
   network_security_group_name = azurerm_network_security_group.myvmssnsg.name
 }
 
+resource "azurerm_network_security_rule" "nsgInrule3" {
+  name                        = "DenyAll"
+  priority                    = 102
+  direction                   = "Inbound"
+  access                      = "Deny"
+  protocol                    = "Tcp"
+  source_port_range           = "*"
+  destination_port_range      = "*"
+  source_address_prefix       = "*"
+  destination_address_prefix  = "*"
+  resource_group_name         = azurerm_resource_group.myrg.name
+  network_security_group_name = azurerm_network_security_group.myvmssnsg.name
+}
 
 resource "azurerm_network_security_rule" "nsgoutrule1" {
-  name                        = "SSH-allow"
+  name                        = "Outbound_access_to_internet"
   priority                    = 200
   direction                   = "Outbound"
   access                      = "Allow"
@@ -88,7 +101,6 @@ resource "azurerm_network_security_rule" "nsgoutrule1" {
   destination_address_prefix  = "Internet"
   resource_group_name         = azurerm_resource_group.myrg.name
   network_security_group_name = azurerm_network_security_group.myvmssnsg.name
-
 }
 
 
